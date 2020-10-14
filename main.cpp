@@ -11,7 +11,8 @@ bool TetrisApp::OnInit()
 {
 #ifdef __WXMAC__
     ProcessSerialNumber psn;
-    GetCurrentProcess(&psn);
+    psn.highLongOfPSN = 0;
+    psn.lowLongOfPSN = kCurrentProcess;
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
 #endif /* __WXMAC__ */
     TetrisGame* tetrisGame = new TetrisGame(wxT("WxTetris"));
